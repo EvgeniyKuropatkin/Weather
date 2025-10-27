@@ -43,7 +43,7 @@ extension Welcome {
             formatter.timeZone = TimeZone(secondsFromGMT: 0)
             let time = formatter.string(from: date)
             let temp = Int(item.main.temp)
-            let icon = mapIcon(item.weather.first?.icon ?? "01d")
+            let icon = mapIcon(item.weather.first?.icon ?? "03")
             return HourlyForecastStruct(time: time, temperature: "\(temp)°", icon: icon)
         }
     }
@@ -62,7 +62,7 @@ extension Welcome {
             formatter.dateFormat = "dd.MM"
             let dayStr = formatter.string(from: day)
             let temp = Int(firstItem.main.temp)
-            let icon = mapIcon(firstItem.weather.first?.icon ?? "01d")
+            let icon = mapIcon(firstItem.weather.first?.icon ?? "03")
             return DailyForecastStruct(day: dayStr, temperature: "\(temp)°", icon: icon)
         }
     }
