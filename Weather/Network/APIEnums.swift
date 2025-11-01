@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 ///Enums для хранения ошибок при работе с API
 enum NetworkError: String, Error{
     

@@ -19,36 +19,40 @@ struct CityCardView: View {
     @State private var showDetails = false;
     
     var body: some View {
+    // TODO: Сверни HStack и посмотри, что у тебя в ZStack. Если там один элемент, то он не нужен, то же касается и остальной верстки. Если ни на что не влияет и находится в структуре только один элемент, то это структура не нужна, лишнее вложение.
         ZStack {
             HStack{
+                // TODO: alignment: .leading можно либо в VStack, либо в frame, верски в данном случае это не меняет
                 VStack(alignment: .leading, spacing: 10){
                     
-                    Text(cityCard.name)
-                        .foregroundColor(.blue)
-                        .fontWeight(.heavy)
                     
-                    Text(cityCard.temperature)
-                        .foregroundColor(.blue)
-                        .fontWeight(.heavy)
+                    // TODO: Если есть одинаковые модификаторы, то можно их объединить в group
+                    Group{
+                        Text(cityCard.name)
+                        
+                        Text(cityCard.temperature)
+                        
+                        Text(cityCard.ShortWeather)
+                        
+                        
+                        Button(
+                            action: {
+                                showDetails.toggle()
+                            }, label: {
+                                Text("Подробнее")
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                            }
+                        )
+                    }
+                    .foregroundColor(.blue)
+                    .fontWeight(.heavy)
                     
-                    Text(cityCard.ShortWeather)
-                        .foregroundColor(.blue)
-                        .fontWeight(.heavy)
-
-                    Button(
-                        action: {
-                            showDetails.toggle()
-                        }, label: {
-                            Text("Подробнее")
-                                .fontWeight(.heavy)
-                                .foregroundColor(.blue)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                        }
-                    )
-                    .sheet(isPresented: $showDetails){
-                        ShowDetailsView(cityCard:cityCard)
-                    }                }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                    //                    // TODO: Лучше sheet вешать на внешнюю структуру, чтобы видеть что у тебя на данной view
+                    //                    .sheet(isPresented: $showDetails){
+                    //                        ShowDetailsView(cityCard:cityCard)
+                    //                    }
+                }
+                .frame(maxWidth: .infinity/*, alignment: .leading)*/)
                 .padding()
                 
                 Image(cityCard.icon)
@@ -65,16 +69,20 @@ struct CityCardView: View {
                         .padding(5)
                 }
             }
-
+            
             
         }
-            .cornerRadius(10)
-            .background(.ultraThinMaterial)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .overlay(RoundedRectangle(cornerRadius: 20)
+        .cornerRadius(10)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .overlay(RoundedRectangle(cornerRadius: 20)
             .stroke(.white.opacity(0.2), lineWidth: 1))
-            .shadow(color: .black.opacity(0.1),
-                    radius: 10, x: 0, y: 4)
+        .shadow(color: .black.opacity(0.1),
+                radius: 10, x: 0, y: 4)
+        
+        .sheet(isPresented: $showDetails){
+            ShowDetailsView(cityCard:cityCard)
+        }
         
     }
 }

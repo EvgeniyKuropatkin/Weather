@@ -7,6 +7,7 @@
 
 import Foundation
 
+    // TODO: А почему структура пустая?
 ///Структура информации об осадках
 struct Rain: Codable {
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+// TODO: Переместить в структуру DateHelper, чтобы вызывать только когда понадобиться. Если это "ObservableObject", то инициализировать лучше в lazy var helperDate = HelperDate(), насколько знаю и понимаю, тогда будет вызываться только в момент вызова функций в helperDate
 ///Открытая функция для форматирования даты в строку
 func formatDate(_ dateString: String) -> String {
     let inputFormatter = DateFormatter()
@@ -21,6 +21,8 @@ func formatDate(_ dateString: String) -> String {
     }
     return "—"
 }
+
+// TODO: Можно переделать, как показывал, внутрь структуры
 ///Открытая функция для преобразования кода погоды в соответствующую этому коду иконку
 func mapIcon(_ code: String) -> String {
     switch code.prefix(2) {
@@ -33,6 +35,8 @@ func mapIcon(_ code: String) -> String {
     default: return "cloud"
     }
 }
+
+    // TODO: Переместить в отдельный файл рядом со структурой
 ///Функция для изъятия из API данных для почасового прогноза
 extension Welcome {
     var hourlyForecast: [HourlyForecastStruct] {
@@ -48,6 +52,8 @@ extension Welcome {
         }
     }
 }
+
+// TODO: Переместить в отдельный файл рядом со структурой
 ///Функция для изъятия из API данных для  прогноза на 7 дней
 extension Welcome {
     var dailyForecast: [DailyForecastStruct] {

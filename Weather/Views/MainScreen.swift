@@ -51,6 +51,8 @@ struct MainScreen: View {
                     }
                 }
             }
+        
+        // TODO: Лучше "backgroundForApp" выносить в константы, чтобы если пришлось поменять, и они находятся по всему проекту, то не пришлось по нему бегать и искать, в константах объявляешь static let imageBackground = "backgroundForApp" и вызываешь ее. Также стоит подумать над названием backgroundForApp, чтобы было более понятно, зачем этот задний фон
             .background(Image("backgroundForApp"))
             .alert("Ошибка", isPresented: .init(get: { errorMessage != nil }, set: { _ in errorMessage = nil })) {
                 Button("OK") { errorMessage = nil }

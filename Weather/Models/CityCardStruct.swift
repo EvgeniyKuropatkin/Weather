@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 ///Структура карточки города
 struct CityCard: Hashable, Identifiable {
     

@@ -6,8 +6,10 @@
 //
 
 import Foundation
+
 /// `NetworkManager` реализован как синглтон и предоставляет методы для получения данных о погоде.
 final class NetworkManager {
+    
     ///Общедоступный экземпляр `NetworkManager`
     static let shared = NetworkManager()
     ///Ключ к используемой API

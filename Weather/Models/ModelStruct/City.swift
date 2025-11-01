@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 ///Структура для описания города
 struct City: Codable {
     

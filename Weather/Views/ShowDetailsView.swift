@@ -75,7 +75,10 @@ struct ShowDetailsView: View {
                 HourlyForecast(cityName: cityCard.name)
                     .padding(10.0)
             }
+            
+            // TODO: чтобы не прыгало Spacer()
         }
+        // TODO: переделать на tollbar
         .overlay(alignment: .topTrailing){
             Button(
                 action: {
@@ -88,6 +91,7 @@ struct ShowDetailsView: View {
             )
         }
         .frame(maxWidth: .infinity, alignment: .topTrailing)
+        // TODO: Перенести в константы
         .background(Image("backgroundForApp"))
     }
 }
